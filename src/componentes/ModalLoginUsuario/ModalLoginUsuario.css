@@ -1,0 +1,41 @@
+.ModalLoginUsuario {
+    display: flex;
+}
+
+.ModalLoginUsuario .ModalLoginUsuario-container {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+
+.ModalLoginUsuario .ModalLoginUsuario-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ModalLoginUsuario .ModalLoginUsuario-container form .ModalLoginUsuario-container__botao-logar {
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid #002F52;
+    padding-bottom: 3rem;
+    font-size: 16px;
+    font-weight: 400;
+    color: #002F52;
+    gap: 3.5rem;
+}
+.ModalLoginUsuario .ModalLoginUsuario-container form .ModalLoginUsuario-container__botao-logar p a {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.ModalLoginUsuario .ModalLoginUsuario-container .ModalLoginUsuario-container__criar-conta {
+    height: 58px;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 3rem;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    color: #002F52;
+}
