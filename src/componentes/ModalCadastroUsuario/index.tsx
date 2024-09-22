@@ -33,7 +33,6 @@ const ModalCadastroUsuario = ({ aberta, aoFechar }: PropsModalCadastroUsuario) =
     }
     axios.post('http://localhost:8000/public/registrar', usuario)
       .then((res) => {
-        console.log(res)
         alert('Usuário foi cadastrado com sucesso!')
         setNome('')
         setEmail('')
@@ -44,7 +43,6 @@ const ModalCadastroUsuario = ({ aberta, aoFechar }: PropsModalCadastroUsuario) =
         setSenhaConfirmada('')
       })
       .catch((err) => {
-        console.log(err)
         alert('Erro ao cadastrar usuário!' + err)
       })
   }
