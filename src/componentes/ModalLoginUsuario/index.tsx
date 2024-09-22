@@ -10,16 +10,16 @@ interface PropsModalLoginUsuario {
   aberto: boolean;
   aoClickCadastrar: () => void;
   aoFechar: () => void;
+  aoEfetuarLogin: () => void
 }
 
-const ModalLoginUsuario = ({ aberto, aoFechar, aoClickCadastrar }: PropsModalLoginUsuario) => {
+const ModalLoginUsuario = ({ aberto, aoFechar, aoClickCadastrar, aoEfetuarLogin }: PropsModalLoginUsuario) => {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const persistirToken = usePersistirToken();
 
   const aoSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-
     const usuario = {
       email,
       senha
@@ -29,7 +29,7 @@ const ModalLoginUsuario = ({ aberto, aoFechar, aoClickCadastrar }: PropsModalLog
         persistirToken(res.data.access_token)
         setEmail('')
         setSenha('')
-        aoFechar()
+        aoEfetuarLogin()
       })
       .catch((erro) => {
         if (erro?.response?.data?.message) {
@@ -68,7 +68,9 @@ const ModalLoginUsuario = ({ aberto, aoFechar, aoClickCadastrar }: PropsModalLog
             />
             <div className="ModalLoginUsuario-container__botao-logar">
               <p><Link to="#">Esqueci minha senha</Link></p>
-              <AbBotao texto="Fazer Login" />
+              <AbBotao
+                texto="Fazer Login"
+              />
             </div>
           </form>
           <div className="ModalLoginUsuario-container__criar-conta">
