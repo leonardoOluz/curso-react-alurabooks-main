@@ -1,0 +1,15 @@
+.secaoPedidos .secaoPedidos-titulo {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 36px;
+    color: #000000;
+    margin: 0;
+}
+
+.secaoPedidos .secaoPedidos__containerPedido {
+    display: flex;
+    padding: 1.5rem 0;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid #002F52;
+}

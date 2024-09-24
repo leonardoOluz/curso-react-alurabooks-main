@@ -1,0 +1,9 @@
+.minhaContaSecao .minhaContaSecao__principal {
+    display: flex;
+    padding: 70px 120px;
+    gap: 4rem;
+}
+
+.minhaContaSecao .minhaContaSecao__principal-conteudo{
+    width: 70%;
+}

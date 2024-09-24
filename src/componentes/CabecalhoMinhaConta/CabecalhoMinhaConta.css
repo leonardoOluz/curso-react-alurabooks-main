@@ -1,0 +1,12 @@
+.cabecalhoMinhaconta {
+    background: linear-gradient(97.54deg, #002F52 35.49%, #326589 165.37%);
+    padding: 18px 0;
+}
+
+.cabecalhoMinhaconta .cabecalhoMinhaconta-titulo {
+    color: #FFFFFF;
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 54px;
+    text-align: center;
+}

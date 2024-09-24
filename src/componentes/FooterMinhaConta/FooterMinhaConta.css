@@ -1,0 +1,23 @@
+.FooterMinhaConta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background: linear-gradient(97.54deg, #002F52 35.49%, #326589 165.37%);
+  padding: 48px 0;
+}
+
+.FooterMinhaConta .FooterMinhaConta-titulo {
+  color: #FFFFFF;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 48px;
+}
+
+.FooterMinhaConta .FooterMinhaConta__container-tag {
+  max-width: 743px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
