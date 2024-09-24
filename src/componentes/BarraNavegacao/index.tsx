@@ -4,16 +4,31 @@ import ModalCadastroUsuario from "../ModalCadastroUsuario"
 import logo from './assets/logo.png'
 import usuario from './assets/usuario.svg'
 import './BarraNavegacao.css'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ModalLoginUsuario from "../ModalLoginUsuario"
 import useObterToken from "../../hooks/useObterToken"
 import useLimparToken from "../../hooks/useLimparToken"
+import { ICategaria } from "../../interfaces/ICategaria"
+import http from "../../http"
 
 const BarraNavegacao = () => {
   const [modalCadastroAberta, setModalCadastroAberta] = useState(false);
-  const [modalLoginAberta, setModalLoginAberta] = useState(false);
+  const [modalLoginAberta, setModalLoginAberta] = useState(false);;
+  const [categorias, setCategorias] = useState<ICategaria[]>([]);
+
+  useEffect(() => {
+    http.get<ICategaria[]>('/categorias')
+      .then(response => {
+        console.log(response.data)
+        setCategorias(response.data)
+      })
+      .catch(error => console.log(error))
+  }, [])
+
   const token = useObterToken();
+
   const [usuarioEstaLogado, setUsuarioEstaLogado] = useState<boolean>(token() !== null);
+
   const deslogar = useLimparToken()
   const navegar = useNavigate();
 
@@ -38,31 +53,13 @@ const BarraNavegacao = () => {
       <li>
         <a href="#!">Categorias</a>
         <ul className="submenu">
-          <li>
-            <Link to="/">
-              Frontend
-            </Link>
-          </li>
-          <li>
-            <Link to="/">
-              Programação
-            </Link>
-          </li>
-          <li>
-            <Link to="/">
-              Infraestrutura
-            </Link>
-          </li>
-          <li>
-            <Link to="/">
-              Business
-            </Link>
-          </li>
-          <li>
-            <Link to="/">
-              Design e UX
-            </Link>
-          </li>
+          {categorias.map(categoria => (
+            <li key={categoria.id}>
+              <Link to={`/categorias/${categoria.slug}`}>
+                {categoria.nome}
+              </Link>
+            </li>
+          ))}
         </ul>
       </li>
     </ul>
