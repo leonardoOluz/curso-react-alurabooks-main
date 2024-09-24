@@ -1,5 +1,5 @@
 function useObterToken() {
-  return ()=> {
+  return () => {
     return sessionStorage.getItem("token");
   };
 }
