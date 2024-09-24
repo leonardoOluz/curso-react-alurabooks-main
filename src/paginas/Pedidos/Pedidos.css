@@ -13,3 +13,19 @@
     align-items: flex-end;
     border-bottom: 1px solid #002F52;
 }
+
+.secaoPedidos .secaoPedidos__containerPedido .deletar-pedido {
+    background-color: tomato;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    margin: 1rem 0 0 1rem;
+    transition: transform 250ms;
+}
+
+.deletar-pedido:hover {
+    transform: scale(1.1);
+}

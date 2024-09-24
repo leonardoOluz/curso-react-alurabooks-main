@@ -4,7 +4,7 @@ import usePersistirToken from "../../hooks/usePersistirToken";
 import { Link } from "react-router-dom";
 import "./ModalLoginUsuario.css"
 import { useState } from "react";
-import axios from "axios";
+import http from "../../http";
 
 interface PropsModalLoginUsuario {
   aberto: boolean;
@@ -24,7 +24,7 @@ const ModalLoginUsuario = ({ aberto, aoFechar, aoClickCadastrar, aoEfetuarLogin 
       email,
       senha
     }
-    axios.post('http://localhost:8000/public/login', usuario)
+    http.post('/public/login', usuario)
       .then(res => {
         persistirToken(res.data.access_token)
         setEmail('')

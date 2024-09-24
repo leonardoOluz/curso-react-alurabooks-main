@@ -1,24 +1,26 @@
 import { AbBotao } from "ds-alurabooks";
-import "./Pedidos.css";
-import axios from "axios";
 import { useEffect, useState } from "react";
-import useObterToken from "../../hooks/useObterToken";
 import { IPedido } from "../../interfaces/IPedido";
+import http from "../../http";
+import "./Pedidos.css";
 
 const Pedidos = () => {
   const [pedidos, setPedidos] = useState<IPedido[]>([]);
-  const token = useObterToken();
   const formatador = Intl.NumberFormat('pt-br', {
     style: "currency",
     currency: "BRL"
   })
 
+  const aoDeletar = (id: number) => {
+    http.delete(`/pedidos/${id}`)
+      .then(() => {
+        setPedidos(pedidos.filter(pedido => pedido.id !== id))
+      })
+      .catch(error => console.log(error))
+  }
+
   useEffect(() => {
-    axios.get<IPedido[]>('http://localhost:8000/pedidos', {
-      headers: {
-        "Authorization": `Bearer ${token()}`
-      }
-    })
+    http.get<IPedido[]>('/pedidos')
       .then(resp => setPedidos(resp.data))
       .catch(error => console.log(error))
   }, [])
@@ -34,6 +36,12 @@ const Pedidos = () => {
             <li>Valor total: <strong>{formatador.format(pedido.total)}
             </strong></li>
             <li>Entrega realizada em: <strong>{new Date(pedido.entrega).toLocaleDateString()}</strong></li>
+            <li>Excluir pedido:
+              <button
+                className="deletar-pedido"
+                onClick={() => aoDeletar(pedido.id)}
+              >X</button>
+            </li>
           </ul>
           <AbBotao texto="Detalhes" />
         </div>
