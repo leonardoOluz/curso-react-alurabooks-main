@@ -1,13 +1,14 @@
 import axios from "axios";
 import useObterToken from "../hooks/useObterToken";
 import { history } from "../App";
+import { ICategaria } from "../interfaces/ICategaria";
 
 const http = axios.create({
   baseURL: "http://localhost:8000",
   headers: {
     Accept: "application/json",
     Content: "application/json",
-  },  
+  },
 });
 
 http.interceptors.request.use(
@@ -38,3 +39,13 @@ http.interceptors.response.use(
 );
 
 export default http;
+
+export const obterCategoriaPorSlug = async (slug: string):Promise<ICategaria> => {
+  const resposta = await http.get<ICategaria[]>("/categorias", {
+    params: {
+      slug,
+    },
+  });
+
+  return resposta.data[0];
+};

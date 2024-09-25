@@ -58,7 +58,7 @@ const BarraNavegacao = () => {
               <Link to={`/categorias/${categoria.slug}`}>
                 {categoria.nome}
               </Link>
-            </li>
+            </li> 
           ))}
         </ul>
       </li>

@@ -6,9 +6,7 @@ interface PropsTituloPrincipal {
 
 const TituloPrincipal = ({ texto }: PropsTituloPrincipal) => {
   return (
-    <div className="tituloPrincipal">
-      <h2>{texto}</h2>
-    </div>
+      <h2 className="tituloPrincipal">{texto}</h2>
   )
 };
 
