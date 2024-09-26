@@ -1,0 +1,8 @@
+.livros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.8rem;
+    justify-content: space-around;
+    max-width: 80%;
+    margin: 24px auto;
+}

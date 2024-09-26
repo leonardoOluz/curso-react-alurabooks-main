@@ -57,3 +57,15 @@ export const obterPublic = async (path: string): Promise<ILivro[]> => {
   const resposta = await http.get<ILivro[]>(`/public/${path}`);
   return resposta.data;
 };
+
+export const obterProdutosPorCategoria = async (
+  categoria: ICategaria
+): Promise<ILivro[]> => {
+  const { data } = await http.get<ILivro[]>("/livros", {
+    params: {
+      categoria: categoria.id,
+    },
+  });
+
+  return data;
+};
