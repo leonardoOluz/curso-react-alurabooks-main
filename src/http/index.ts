@@ -2,6 +2,7 @@ import axios from "axios";
 import useObterToken from "../hooks/useObterToken";
 import { history } from "../App";
 import { ICategaria } from "../interfaces/ICategaria";
+import { ILivro } from "../interfaces/ILivro";
 
 const http = axios.create({
   baseURL: "http://localhost:8000",
@@ -40,7 +41,9 @@ http.interceptors.response.use(
 
 export default http;
 
-export const obterCategoriaPorSlug = async (slug: string):Promise<ICategaria> => {
+export const obterCategoriaPorSlug = async (
+  slug: string
+): Promise<ICategaria> => {
   const resposta = await http.get<ICategaria[]>("/categorias", {
     params: {
       slug,
@@ -48,4 +51,9 @@ export const obterCategoriaPorSlug = async (slug: string):Promise<ICategaria> =>
   });
 
   return resposta.data[0];
+};
+
+export const obterPublic = async (path: string): Promise<ILivro[]> => {
+  const resposta = await http.get<ILivro[]>(`/public/${path}`);
+  return resposta.data;
 };
